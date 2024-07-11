@@ -4,6 +4,6 @@ describe("Newsletter Subscribe Form", () => {
     })
   
     it("allows users to subscribe to the email list", () => {
-        cy.getByData("email-input")
+        cy.getByData("email-input").type("tom@aol.com")
     })
 })
