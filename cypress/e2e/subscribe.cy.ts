@@ -14,4 +14,12 @@ describe("Newsletter Subscribe Form", () => {
       cy.getByData("submit-button").click()
       cy.getByData("success-message").should("not.exist")
     })
+
+    it.only("does NOT allow already subscribed email addresses", () => {
+      cy.getByData("email-input").type("john@example.com")
+      cy.getByData("submit-button").click()
+      cy.getByData("server-error-message")
+        .should("exist")
+        .contains("already exists. Please use a different email address.")
+    })
 })
